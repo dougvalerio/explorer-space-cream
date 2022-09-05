@@ -1,0 +1,268 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    font-size: 62.5%;
+
+    --bg-body: hsl(233, 100%, 97%);
+    --bg-header: hsl(218, 17%, 62%);
+    --bg-color-h1: hsl(275, 18%, 79%);
+    --bg-color-h3: hsl(312, 91%, 96%);
+    --color-font-p: hsl(274, 84%, 12%);
+    --color-font-h3: hsl(232, 17%, 35%);
+}
+
+.page {
+    min-width: 30rem;
+    height: 100vh;
+    margin: 0 auto;
+}
+
+header {
+    height: 40rem;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header::before {
+    content: '';
+    width: 100%;
+    height: 25rem;
+    background: var(--bg-header);
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+header img {
+    width: 13.7rem;
+
+    margin: 3.2rem 0 3.2rem;
+
+    animation: topdown 1000ms;
+}
+
+header h1 {
+    color: #FFFFFF;
+    font-family: 'Staatliches', cursive; 
+    font-size: 4rem;
+    font-weight: 400;
+    line-height: 3.4rem;
+    letter-spacing: 0.05em;
+    text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    text-align: center;
+
+    width: 100%;
+    padding: 0.8rem 0; 
+    background: var(--bg-color-h1);
+
+    margin-bottom: 4.3rem;
+}
+
+header p {
+    color: var(--color-font-p);
+    font-family: 'Palanquin', sans-serif;
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 1.5rem;
+    text-align: center;
+
+    padding: 0 4rem;
+}
+
+main {
+    display: grid;
+    justify-content: center;
+    gap: 3.2rem;
+
+    margin: 2rem 0 5rem;
+
+}
+
+.card {
+    position: relative;
+
+    animation: topdown 1000ms;
+}
+
+.card h3 {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+
+    font-family: 'Staatliches', cursive;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 34px;
+    letter-spacing: 0.05em;
+
+    color: var(--color-font-h3);
+    background: var(--bg-color-h3); 
+
+    padding: 0 2.4rem;
+    border-radius: 2rem;
+
+    animation: downtop 700ms 150ms backwards;
+}
+
+.desktop {
+    display: none;
+}
+
+@keyframes downtop {
+    0% {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes topdown {
+    0% {
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (min-width: 700px) {
+    .page {
+        max-width: 170rem;
+    }
+    
+    main {
+        grid-template-areas:"A B"
+                            "D B"
+                            "D C";
+    }
+
+    main div:nth-child(1) {
+        grid-area: A;
+    }
+
+    main div:nth-child(2) {
+        grid-area: B;
+    }
+
+    main div:nth-child(3) {
+        grid-area: C;
+    }
+
+    main div:nth-child(4) {
+        grid-area: D;
+    }
+
+}
+
+@media (min-width: 1024px) {  
+    html, body {
+        height: 100vh;
+        width: 100vw;
+    }
+
+    .page {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr;
+    }
+
+    header {
+        height: 100%;
+        min-width: 37.7rem;
+        background: var(--bg-header);
+    } 
+
+    header::before {
+        content: none;
+    }
+
+    header img {
+        min-width: 20rem;
+    }
+
+    header h1 {
+        padding: 2.1rem 0;
+    }
+
+    header p {
+        color: #FFFFFF;
+        font-size: 2.4rem;
+        font-weight: 400;
+        line-height: 2rem;
+
+        max-width: 30rem;
+    }
+
+    main {
+        justify-content: center;
+        align-items: center;
+        grid-template-areas: "A B E"
+                             "D B F"
+                             "D C F"
+                             "G G G";
+
+        padding: 6rem 8rem;
+
+        margin: 0;
+    }
+
+    .card img{
+        width: 26rem;
+    }
+
+    .desktop {
+        display: grid;
+    }
+
+    main div:nth-child(5) {
+        grid-area: E;
+    }
+
+    main div:nth-child(6) {
+        grid-area: F;
+    }
+
+    main footer {
+        grid-area: G;
+    }
+
+    main footer p {
+        font-family: 'Roboto', sans-serif;
+        color: var(--color-font-h3);
+        font-size: 1.4rem;
+        font-weight: 400;
+        line-height: 2.8rem;
+        text-align: center;
+    }
+
+    main footer p a {
+        font-family: 'Open Sans', sans-serif;
+        color: var(--color-font-h3);
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .card h3 {
+        display: none;
+    }
+
+    .card:hover h3 {
+        display: block;
+    }
+}
+
