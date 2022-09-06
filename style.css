@@ -92,6 +92,14 @@ main {
     animation: topdown 1000ms;
 }
 
+.card img {
+    transition: all 400ms ease-in-out;
+}
+
+.card img:hover {
+    transform: scale(1.1);
+}
+
 .card h3 {
     position: absolute;
     top: 1.5rem;
